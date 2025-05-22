@@ -15,7 +15,9 @@ export default function Login() {
         e.preventDefault();
 
         axios
-            .post("http://localhost:8000/users/signin/", { email: username, password })
+            .post("http://localhost:8000/users/signin/", 
+                { username, password },
+                { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
             .then(res => {
                 console.log(res);
                 if (res.status === 200) {

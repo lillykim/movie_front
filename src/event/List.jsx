@@ -44,7 +44,7 @@ const List = () => {
           {events.map((event) => (
             <li key={event.id} style={{ marginBottom: '20px' }}>
               <h3><Link to={`/detail/${event.id}`}>{event.title}</Link></h3>
-              {event.image && <img src={event.image} alt={event.title} style={{ width: '200px' }} />}
+              {event.image && <img src={`http://localhost:8000/events/download/${event.id}`} alt={event.title} style={{ width: '200px' }} />}
               <p><strong>설명:</strong> {event.description}</p>
               <p><strong>위치:</strong> {event.location}</p>
               <p><strong>태그:</strong> {event.tags}</p>
