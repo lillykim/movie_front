@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 export default function Login() {
     const navigate = useNavigate();
-    const inputRef = useRef();
+    const emailRef = useRef();       // 이메일 입력창
+    const passwordRef = useRef();    // 비밀번호 입력창
+
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -15,7 +18,7 @@ export default function Login() {
         e.preventDefault();
 
         axios
-            .post("http://localhost:8000/users/signin/", 
+            .post("http://localhost:8000/users/signin/",
                 { username, password },
                 { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
             .then(res => {
@@ -29,23 +32,29 @@ export default function Login() {
             })
             .catch(err => {
                 console.log(err);
-                if (err.status === 401 || err.status === 404) {
-                    alert("로그인에 실패했습니다.\n" + err.response.data.detail);
+                if (err.response?.status === 404) {
+                    alert(err.response.data.detail);
+                    emailRef.current.focus();  
+                } else if (err.response?.status === 401) {
+                    alert(err.response.data.detail);
+                    passwordRef.current.focus();  
+                } else if (err.response?.status === 403) {
+                    alert(err.response.data.detail);  // 탈퇴 계정
+                    emailRef.current.focus();        
                 } else {
                     alert("로그인에 실패했습니다.");
+                    emailRef.current.focus();        
                 }
-                setUsername('');
-                setPassword('');
-                inputRef.current.focus();
             });
+
     };
-        
+
     return (
         <>
             <h2>로그인</h2>
             <form onSubmit={handleSubmit}>
-                <input ref={inputRef} type="text" value={username} onChange={changeUsername} placeholder="이메일을 입력하세요." />
-                <input type="password" value={password} onChange={changePassword} placeholder="패스워드를 입력하세요." />
+                <input ref={emailRef} type="text" value={username} onChange={changeUsername} placeholder="이메일을 입력하세요." />
+                <input ref={passwordRef} type="password" value={password} onChange={changePassword} placeholder="비밀번호를 입력하세요." />
                 <button type="submit">로그인</button>
             </form>
         </>
