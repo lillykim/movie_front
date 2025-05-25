@@ -3,18 +3,45 @@ import List from "./event/List";
 import Regist from "./event/Regist";
 import Detail from "./event/Detail";
 import Login from "./user/Login";
+import Signup from "./user/Signup";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUserTimes } from "react-icons/fa";
+
+
 
 function Layout() {
     const [isLogin, setIsLogin] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         window.sessionStorage.removeItem("access_token");
         setIsLogin(false);
     };
 
-    const navigate = useNavigate();
-    
+    const handleDeleteAccount = () => {
+        if (window.confirm("정말 탈퇴하시겠습니까?")) {
+            const token = sessionStorage.getItem("access_token");
+            axios
+                .delete("http://localhost:8000/users/me", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                .then((res) => {
+                    alert(res.data.message);
+                    sessionStorage.removeItem("access_token");
+                    setIsLogin(false);
+                    navigate("/login");
+                })
+                .catch((err) => {
+                    alert("회원탈퇴에 실패했습니다.");
+                    console.error(err);
+                });
+        }
+    };
+
+
     useEffect(() => {
         const token = window.sessionStorage.getItem("access_token");
         if (token) {
@@ -25,31 +52,49 @@ function Layout() {
     });
 
     useEffect(() => {
-        if(isLogin) {
+        if (isLogin) {
             navigate("/list");
         } else {
             navigate("/login");
         }
     }, [isLogin]);
 
+
     return (
+            
         <>
-            <h1>이벤트 관리 시스템</h1>
-            <hr />
-            <header>
-                {
-                    isLogin ? (
-                        <a onClick={handleLogout}>로그아웃</a>
-                    ) : (
-                        <Link to="/login">로그인</Link>
-                    )
-                }
-            </header>
+            <h1>Setflix</h1>
+
+            <header style={{ display: "none" }}></header>
+
             <main>
+                <div className="top-icons">
+                    {isLogin ? (
+                        <>
+                            <button onClick={handleLogout} className="nav-icon" title="로그아웃">
+                                <FaSignOutAlt />
+                            </button>
+                            <button onClick={handleDeleteAccount} className="nav-icon" title="회원탈퇴">
+                                <FaUserTimes />
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login" className="nav-icon" title="로그인">
+                                <FaSignInAlt />
+                            </Link>
+                            <Link to="/signup" className="nav-icon" title="회원가입">
+                                <FaUserPlus />
+                            </Link>
+                        </>
+                    )}
+                </div>
+
                 <Outlet />
             </main>
+
             <footer>
-                <p>이벤트 관리 시스템 © 2023</p>
+                <p>영화 정보 관리 웹 애플리케이션 프로젝트 © 2025</p>
             </footer>
         </>
     );
@@ -62,6 +107,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} />
                         <Route path="/regist" element={<Regist />} />
                         <Route path="/list" element={<List />} />
                         <Route path="/detail/:event_id" element={<Detail />} />
