@@ -3,7 +3,8 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
-export default function Login() {
+
+export default function Login({ setIsLogin, setIsAdmin }) {
     const navigate = useNavigate();
     const emailRef = useRef();       // 이메일 입력창
     const passwordRef = useRef();    // 비밀번호 입력창
@@ -27,6 +28,10 @@ export default function Login() {
                     // 메시지를 출력 -> 토큰을 저장 -> 이벤트 목록으로 이동
                     alert(res.data.message);
                     window.sessionStorage.setItem("access_token", res.data.access_token);
+                    window.sessionStorage.setItem("is_admin", res.data.is_admin);
+                    setIsLogin(true);
+                    setIsAdmin(res.data.is_admin);
+
                     navigate("/list");
                 }
             })
@@ -34,16 +39,16 @@ export default function Login() {
                 console.log(err);
                 if (err.response?.status === 404) {
                     alert(err.response.data.detail);
-                    emailRef.current.focus();  
+                    emailRef.current.focus();
                 } else if (err.response?.status === 401) {
                     alert(err.response.data.detail);
-                    passwordRef.current.focus();  
+                    passwordRef.current.focus();
                 } else if (err.response?.status === 403) {
                     alert(err.response.data.detail);  // 탈퇴 계정
-                    emailRef.current.focus();        
+                    emailRef.current.focus();
                 } else {
                     alert("로그인에 실패했습니다.");
-                    emailRef.current.focus();        
+                    emailRef.current.focus();
                 }
             });
 
@@ -51,6 +56,7 @@ export default function Login() {
 
     return (
         <>
+        
             <h2>로그인</h2>
             <form onSubmit={handleSubmit}>
                 <input ref={emailRef} type="text" value={username} onChange={changeUsername} placeholder="이메일을 입력하세요." />

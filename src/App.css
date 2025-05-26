@@ -114,12 +114,13 @@ ul {
 
 /* 이벤트 아이템 스타일 */
 li {
-    background-color: #ffffff;
+    background-color: #BDE47A;
     border: 1px solid #e1e1e1;
     border-radius: 6px;
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
+    color: 1e1e2f;
 }
 
 li img {
@@ -205,5 +206,90 @@ footer p{
 .movie-list li p {
   margin: 6px 0;
   font-size: 14px;
+}
+
+/* 관리자 페이지 테이블 스타일 */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #2a2a40;
+    color: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+.admin-table thead {
+    background-color: #3a3a55;
+    font-weight: bold;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #3e3e5c;
+}
+
+.admin-table button {
+    padding: 8px 12px;
+    background-color: #BDE47A;
+    color: #1e1e2f;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.admin-table button:hover {
+    background-color: #A2D156;
+}
+
+.cta-button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 26px;
+    background-color: #BDE47A;
+    color: #1e1e2f;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.4), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+.cta-button:hover::before {
+    animation: shine 0.8s ease;
+}
+
+@keyframes shine {
+    0% {
+        left: -75%;
+    }
+    100% {
+        left: 125%;
+    }
 }
 
