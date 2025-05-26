@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes, Link, Outlet, useNavigate } from "react-router-dom";
-import List from "./event/List";
-import Regist from "./event/Regist";
-import Detail from "./event/Detail";
+import List from "./movie/List";
+import Regist from "./movie/Regist";
+import Detail from "./movie/Detail";
 import Login from "./user/Login";
 import Signup from "./user/Signup";
 import { useEffect, useState } from "react";
