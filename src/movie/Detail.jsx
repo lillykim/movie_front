@@ -1,39 +1,82 @@
 import "../App.css";
-
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Detail = () => {
-  const { event_id } = useParams(); // URL 파라미터에서 event_id 추출
-  const [event, setEvent] = useState(null);
+  const { movie_id } = useParams();
+  const navigate = useNavigate();
+  const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/events/${event_id}`)
-      .then((response) => {
-        setEvent(response.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError('이벤트 정보를 불러오는 데 실패했습니다.');
-        setLoading(false);
-      });
-  }, [event_id]);
+    const token = sessionStorage.getItem("access_token");
+
+    axios.get(`http://localhost:8000/movies/${movie_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      setMovie(response.data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      setError('영화 정보를 불러오는 데 실패했습니다.');
+      setLoading(false);
+    });
+  }, [movie_id]);
+
+  const handleDelete = () => {
+    const confirm = window.confirm("정말 이 영화를 삭제하시겠습니까?");
+    if (!confirm) return;
+
+    const token = sessionStorage.getItem("access_token");
+    axios.delete(`http://localhost:8000/movies/${movie_id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(() => {
+      alert("영화가 삭제되었습니다.");
+      navigate("/list");
+    })
+    .catch((err) => {
+      console.error(err);
+      if (err.response && err.response.status === 403) {
+        alert("삭제 권한이 없습니다. 본인이 등록한 영화만 삭제할 수 있습니다.");
+      } else {
+        alert("삭제 중 오류가 발생했습니다.");
+      }
+    });
+  };
 
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>{error}</p>;
-  if (!event) return <p>이벤트 정보가 없습니다.</p>;
+  if (!movie) return <p>영화 정보가 없습니다.</p>;
 
   return (
-    <div>
-      <h2>{event.title}</h2>
-      {event.image && <img src={event.image} alt={event.title} style={{ width: '300px' }} />}
-      <p><strong>설명:</strong> {event.description}</p>
-      <p><strong>위치:</strong> {event.location}</p>
-      <p><strong>태그:</strong> {event.tags}</p>
-      <p><strong>이벤트 ID:</strong> {event.id}</p>
+    <div className="movie-detail">
+      <h2>{movie.title}</h2>
+      {movie.poster_path && (
+        <img
+          src={`http://localhost:8000/movies/download/${movie.id}`}
+          alt={movie.title}
+          style={{ width: '300px', borderRadius: '10px' }}
+        />
+      )}
+      <p><strong>줄거리:</strong> {movie.story}</p>
+      <p><strong>배우:</strong> {movie.actors}</p>
+      <p><strong>평점:</strong> {movie.rating ?? '평점 없음'}</p>
+      <p><strong>등록 ID:</strong> {movie.id}</p>
+
+      <div style={{ marginTop: "20px" }}>
+        <Link to={`/movies/${movie.id}/edit`}>
+          <button>수정하기</button>
+        </Link>
+        <button onClick={handleDelete} style={{ marginLeft: "10px", color: "white", backgroundColor: "red" }}>
+          삭제하기
+        </button>
+      </div>
     </div>
   );
 };

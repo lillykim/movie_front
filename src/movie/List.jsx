@@ -57,10 +57,9 @@ const MovieList = () => {
               </h3>
               {movie.poster_path && (
                 <img
-                  src={`http://localhost:8000/movies/download/${movie.id}`}
+                  src={`http://localhost:8000/movies/download/${movie.id}?t=${Date.now()}`}
                   alt={movie.title}
                   style={{ width: "200px", borderRadius: "8px" }}
-                  className="movie-poster"
                 />
               )}
               <p className="text-black-800">줄거리: {movie.story}</p>

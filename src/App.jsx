@@ -4,6 +4,7 @@ import Regist from "./movie/Regist";
 import Detail from "./movie/Detail";
 import Login from "./user/Login";
 import Signup from "./user/Signup";
+import Edit from "./movie/Edit";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUserTimes } from "react-icons/fa";
@@ -110,7 +111,8 @@ function App() {
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/regist" element={<Regist />} />
                         <Route path="/list" element={<List />} />
-                        <Route path="/detail/:event_id" element={<Detail />} />
+                        <Route path="/movies/:movie_id" element={<Detail />} />
+                        <Route path="/movies/:movie_id/edit" element={<Edit />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
