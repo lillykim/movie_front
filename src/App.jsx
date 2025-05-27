@@ -17,6 +17,7 @@ function Layout({ isLogin, setIsLogin, isAdmin, setIsAdmin }) {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const username = sessionStorage.getItem("username");
 
     const currentPath = location.pathname;
 
@@ -68,19 +69,19 @@ function Layout({ isLogin, setIsLogin, isAdmin, setIsAdmin }) {
 
     useEffect(() => {
         if (isLogin) {
-            navigate("/list");
+            navigate("/");
         }
     }, [isLogin]);
 
 
     return (
-            
+
         <>
-        
+
             {/* 메인페이지 이동 */}
             <h1 onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
                 Setflix
-            </h1> 
+            </h1>
 
             <header style={{ display: "none" }}></header>
 
@@ -88,6 +89,18 @@ function Layout({ isLogin, setIsLogin, isAdmin, setIsAdmin }) {
                 <div className="top-icons">
                     {isLogin ? (
                         <>
+                            {/* 사용자 이름 표시 */}
+                            <span style={{
+                                marginRight: "10px",
+                                fontWeight: "600",
+                                color: "#BDE47A",          // 연두 계열로 통일
+                                fontSize: "1.1rem",
+                                display: "flex",
+                                alignItems: "center"
+                            }}>
+                                {username}님
+                            </span>
+
                             <button onClick={handleLogout} className="nav-icon" title="로그아웃">
                                 <FaSignOutAlt />
                             </button>

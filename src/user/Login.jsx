@@ -29,10 +29,12 @@ export default function Login({ setIsLogin, setIsAdmin }) {
                     alert(res.data.message);
                     window.sessionStorage.setItem("access_token", res.data.access_token);
                     window.sessionStorage.setItem("is_admin", res.data.is_admin);
+                    window.sessionStorage.setItem("username", res.data.username);
+
                     setIsLogin(true);
                     setIsAdmin(res.data.is_admin);
 
-                    navigate("/list");
+                    navigate("/");
                 }
             })
             .catch(err => {
