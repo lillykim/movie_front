@@ -74,11 +74,9 @@ function Layout({ isLogin, setIsLogin, isAdmin, setIsAdmin }) {
 
 
     return (
-
+            
         <>
-            <h1 onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
-                Setflix
-            </h1>
+            <h1>Setflix</h1>
 
             <header style={{ display: "none" }}></header>
 
