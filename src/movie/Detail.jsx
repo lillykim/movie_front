@@ -59,7 +59,7 @@ const Detail = () => {
       <h2>{movie.title}</h2>
       {movie.poster_path && (
         <img
-          src={`http://localhost:8000/movies/download/${movie.id}`}
+          src={`http://localhost:8000/movies/download/${movie.id}?t=${Date.now()}`}
           alt={movie.title}
           style={{ width: '300px', borderRadius: '10px', display: "block", margin: "0 auto 24px auto" }}
         />
@@ -77,7 +77,7 @@ const Detail = () => {
         </button>
         {movie.poster_path && (
           <a
-            href={`http://localhost:8000/movies/download/${movie.id}`}
+            href={`http://localhost:8000/movies/download/${movie.id}?t=${Date.now()}`}
             download={movie.poster_path}
             style={{ textDecoration: "none" }}
           >
