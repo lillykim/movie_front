@@ -55,20 +55,20 @@ const Detail = () => {
   if (!movie) return <p>영화 정보가 없습니다.</p>;
 
   return (
-    <div className="movie-detail">
+    <div className="movie-detail" style={{ maxWidth: 500, margin: "40px auto", background: "#fff", borderRadius: 16, padding: 32, boxShadow: "0 4px 16px rgba(25,118,210,0.08)", color: "#222", textAlign: "center" }}>
       <h2>{movie.title}</h2>
       {movie.poster_path && (
         <img
           src={`http://localhost:8000/movies/download/${movie.id}`}
           alt={movie.title}
-          style={{ width: '300px', borderRadius: '10px' }}
+          style={{ width: '300px', borderRadius: '10px', display: "block", margin: "0 auto 24px auto" }}
         />
       )}
-      <p><strong>줄거리:</strong> {movie.story}</p>
-      <p><strong>배우:</strong> {movie.actors}</p>
-      <p><strong>평점:</strong> {movie.rating ?? '평점 없음'}</p>
+      <p style={{ textAlign: "left", margin: "16px 0" }}><strong>줄거리:</strong> {movie.story}</p>
+      <p style={{ textAlign: "left" }}><strong>배우:</strong> {movie.actors}</p>
+      <p style={{ textAlign: "left" }}><strong>평점:</strong> {movie.rating ?? '평점 없음'}</p>
 
-      <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
+      <div style={{ marginTop: "20px", display: "flex", gap: "10px", justifyContent: "center" }}>
         <Link to={`/movies/${movie.id}/edit`}>
           <button>수정하기</button>
         </Link>

@@ -213,6 +213,7 @@ button:hover {
   padding-left: 4px;
   line-height: 1.5;
   word-break: break-word;
+  white-space: pre-line; /* 줄거리 줄바꿈 허용 */
 }
 .movie-story.clamp {
   display: -webkit-box;
