@@ -69,13 +69,24 @@ const Detail = () => {
       <p><strong>평점:</strong> {movie.rating ?? '평점 없음'}</p>
       <p><strong>등록 ID:</strong> {movie.id}</p>
 
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
         <Link to={`/movies/${movie.id}/edit`}>
           <button>수정하기</button>
         </Link>
-        <button onClick={handleDelete} style={{ marginLeft: "10px", color: "white", backgroundColor: "red" }}>
+        <button onClick={handleDelete} style={{ color: "white", backgroundColor: "red" }}>
           삭제하기
         </button>
+        {movie.poster_path && (
+          <a
+            href={`http://localhost:8000/movies/download/${movie.id}`}
+            download={movie.poster_path}
+            style={{ textDecoration: "none" }}
+          >
+            <button style={{ backgroundColor: "#bde47a", color: "#222" }}>
+              포스터 다운로드
+            </button>
+          </a>
+        )}
       </div>
     </div>
   );
