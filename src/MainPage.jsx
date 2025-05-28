@@ -54,7 +54,7 @@ export default function MainPage() {
             </section>
 
             <p style={styles.footer}>
-                SETFLIX는 당신의 영화 취향을 기록하는 공간입니다.
+                Setflix는 당신의 영화 취향을 기록하는 공간입니다.
             </p>
         </div>
     );

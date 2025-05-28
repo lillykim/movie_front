@@ -22,6 +22,10 @@ function Layout({ isLogin, setIsLogin, isAdmin, setIsAdmin }) {
     const currentPath = location.pathname;
 
     const handleLogout = () => {
+        const confirmed = window.confirm("로그아웃 하시겠습니까?");
+        if (!confirmed) return;
+        alert("로그아웃 되었습니다.");
+
         window.sessionStorage.removeItem("access_token");
         window.sessionStorage.removeItem("is_admin");
         setIsLogin(false);
@@ -105,9 +109,11 @@ function Layout({ isLogin, setIsLogin, isAdmin, setIsAdmin }) {
                                 <FaSignOutAlt />
                             </button>
                             {isAdmin ? (
-                                <button onClick={() => navigate("/admin")} className="nav-icon" title="관리자 페이지">
-                                    <FaUserCog />
-                                </button>
+                                currentPath !== "/admin" && (
+                                    <button onClick={() => navigate("/admin")} className="nav-icon" title="관리자 페이지">
+                                        <FaUserCog />
+                                    </button>
+                                )
                             ) : (
                                 <button onClick={handleDeleteAccount} className="nav-icon" title="회원탈퇴">
                                     <FaUserTimes />
