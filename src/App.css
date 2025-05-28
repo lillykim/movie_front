@@ -1,74 +1,72 @@
 /* 전체 폰트 및 배경 설정 */
 body {
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    background-color: #1e1e2f;   
-    margin: 0;
-    padding: 0;
-    color: #f5f5f5;           
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  background-color: #1e1e2f;
+  margin: 0;
+  padding: 0;
+  color: #f5f5f5;
 }
 
 /* 공통 제목 스타일 */
 h1, h2, h3 {
-    color: #BDE47A;             
-    margin-bottom: 10px;
-    text-align: center;        
+  color: #BDE47A;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* 헤더 스타일 */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #2a2a40;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #2a2a40;
 }
-
 
 header h1 {
-    margin: 0;
-    font-size: 28px;
-    flex-grow: 1;
-    text-align: center;
-    color: #BDE47A; 
+  margin: 0;
+  font-size: 28px;
+  flex-grow: 1;
+  text-align: center;
+  color: #BDE47A;
 }
-
 
 /* 아이콘 스타일 */
 .top-icons {
-    display: flex;
-    gap: 16px;
-    justify-content: flex-end;
-    padding: 10px 30px;
-    margin-bottom: -20px;
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  padding: 10px 30px;
+  margin-bottom: -20px;
 }
 
 .nav-icon {
-    background: none;
-    border: none;
-    color: #BDE47A; 
-    font-size: 22px;
-    cursor: pointer;
-    transition: color 0.3s;
+  background: none;
+  border: none;
+  color: #BDE47A;
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
 .nav-icon:hover {
-    color: #00C49F;
+  color: #00C49F;
 }
 
 /* 폼 스타일 */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 20px;
-    width: 500px;
-    margin: 40px auto;
-    background: #fff;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  width: 500px;
+  margin: 40px auto;
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
 /* 입력창 스타일 */
@@ -77,109 +75,46 @@ input[type="password"],
 input[type="number"],
 input[type="file"],
 input[type="email"] {
-    padding: 10px;
-    height: 44px;
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  padding: 10px;
+  height: 44px;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-/* 버튼 스타일 */
+/* 버튼 공통 */
 button {
-    padding: 10px;
-    background-color: #BDE47A; 
-    border: none;
-    color: #1e1e2f; 
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+  padding: 10px;
+  background-color: #BDE47A;
+  border: none;
+  color: #1e1e2f;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #A2D156;  
+  background-color: #A2D156;
 }
 
-
-
-/* 이벤트 목록 컨테이너 */
-ul {
-    list-style-type: none;
-    padding: 0;
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-/* 이벤트 아이템 스타일 */
-li {
-    background-color: #BDE47A;
-    border: 1px solid #e1e1e1;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
-    color: 1e1e2f;
-}
-
-li img {
-    display: block;
-    margin-top: 10px;
-    border-radius: 4px;
-}
-
-/* 링크 스타일 */
-a {
-    text-decoration: none;
-    color: #BDE47A; 
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* 유효성 메시지 */
-.validation-message {
-    min-height: 20px;
-    font-size: 0.9em;
-    margin-top: -5px;
-    color: red;
-    transition: color 0.3s ease;
-}
-
-.validation-message.valid {
-    color: green;
-}
-
-/* 푸터 스타일 */
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #aaa;
-    font-size: 14px;
-}
-
-footer p{
-    color: #BDE47A; 
-}
-
-ㅈ/* 영화 목록 제목 */
-h2 {
-  text-align: center;
-  margin-top: 32px;
-  margin-bottom: 24px;
-  font-size: 2rem;
-  color: #1976d2;
-  letter-spacing: 2px;
+/* 검색창 + 버튼 레이아웃 */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto 32px auto;
+  max-width: 800px;
+  flex-wrap: wrap;
 }
 
 /* 검색창 스타일 */
 .movie-search {
   width: 100%;
   max-width: 400px;
-  margin: 0 auto 32px auto;
-  display: block;
   padding: 12px 16px;
   font-size: 1.1rem;
   border-radius: 8px;
@@ -194,7 +129,35 @@ h2 {
   background: #f0f7ff;
 }
 
-/* 영화 카드 리스트 */
+/* 검색 버튼 */
+.search-btn {
+  padding: 0 20px;
+  height: 44px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  display: inline-block;
+  vertical-align: middle;
+}
+.search-btn:hover {
+  background-color: #125ea2;
+}
+
+/* 영화 등록 버튼 (인라인) */
+.long-btn.inline {
+  margin: 0;
+  padding: 12px 20px;
+  font-size: 1rem;
+  height: 48px;
+  display: inline-block;
+}
+
+/* 영화 목록 */
 .movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -224,8 +187,6 @@ h2 {
   box-shadow: 0 16px 32px rgba(25, 118, 210, 0.13), 0 3px 8px rgba(189, 228, 122, 0.13);
   border-color: #bde47a;
 }
-
-/* 영화 제목 */
 .movie-list li h3 {
   color: #1976d2;
   margin-bottom: 14px;
@@ -233,8 +194,6 @@ h2 {
   font-weight: bold;
   letter-spacing: 1px;
 }
-
-/* 영화 이미지 */
 .movie-list li img {
   width: 90%;
   max-width: 220px;
@@ -245,79 +204,44 @@ h2 {
   background: #f8fff2;
 }
 
-/* 영화 정보 텍스트 */
-.movie-list li .movie-story {
+/* 영화 정보 */
+.movie-story {
   margin: 6px 0 4px 0;
   font-size: 15px;
   color: #333;
   text-align: left;
   padding-left: 4px;
-  background: none;
-  border-radius: 0;
-  padding: 0 0 0 4px;
   line-height: 1.5;
-  word-break: break-all;
-  overflow: visible;
-  display: block;
+  word-break: break-word;
 }
-
 .movie-story.clamp {
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* 2줄만 보이기 */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   white-space: normal;
-  position: relative;
 }
 
-/* 배우, 평점 라벨 강조 */
-.movie-list li .movie-label {
+/* 영화 라벨 */
+.movie-label {
   font-weight: bold;
   color: #1976d2;
   margin-right: 6px;
 }
-
-.movie-list li .movie-actors {
-  margin: 6px 0 4px 0;
+.movie-actors,
+.movie-rating {
   font-size: 15px;
   color: #333;
   text-align: left;
   padding-left: 4px;
 }
-
-.movie-list li .movie-rating {
+.movie-rating {
   color: #ffb300;
   font-weight: bold;
   margin-top: 8px;
-  text-align: left;
-  padding-left: 4px;
-  font-size: 15px;
 }
 
-/* 영화 등록 버튼 */
-.long-btn {
-  width: 100%;
-  max-width: 400px;
-  display: block;
-  margin: 32px auto 0 auto;
-  padding: 16px 0;
-  font-size: 1.15rem;
-  background-color: #1976d2;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
-  transition: background 0.2s, transform 0.15s;
-  letter-spacing: 1px;
-}
-.long-btn:hover {
-  background-color: #125ea2;
-  transform: scale(1.03);
-}
-
-/* 더보기 버튼 스타일 */
+/* 더보기 버튼 */
 .more-btn {
   background: none;
   border: none;
@@ -325,87 +249,48 @@ h2 {
   font-size: 0.97em;
   margin-left: 8px;
   cursor: pointer;
-  font-weight: normal;
-  padding: 0 2px;
   text-decoration: underline;
   border-radius: 4px;
   transition: color 0.2s, background 0.2s;
-  vertical-align: baseline;
 }
-
 .more-btn:hover {
   color: #125ea2;
   background: #e3f3c7;
-  text-decoration: underline;
 }
 
-/* 영화 상세 스타일 */
-.movie-detail {
-  max-width: 480px;
-  margin: 40px auto 60px auto;
-  padding: 32px 28px 28px 28px;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.10), 0 2px 8px rgba(189, 228, 122, 0.10);
-  text-align: center;
-}
-
-.movie-detail h2 {
-  color: #1976d2;
-  margin-bottom: 18px;
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
-.movie-detail img {
-  display: block;
-  margin: 0 auto 22px auto;
-  max-width: 90%;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.07);
-  background: #f8fff2;
-}
-
-.movie-detail p {
-  margin: 14px 0;
-  font-size: 1.08rem;
-  color: #333;
-  text-align: left;
-  word-break: break-all;
-  line-height: 1.7;
-  white-space: pre-line; /* 줄바꿈 적용 */
-}
-
-.movie-detail strong {
-  color: #1976d2;
-  font-weight: bold;
-  margin-right: 6px;
-}
-
-.movie-detail button {
-  padding: 8px 20px;
-  border-radius: 6px;
+/* 영화 등록 버튼 (하단 전용) */
+.long-btn {
+  width: 110px;
+  max-width: 110px;
+  display: inline-block;
+  margin: 0 0 0 8px; /* 검색 버튼 옆에 붙도록 */
+  padding: 0;
+  height: 44px;
+  font-size: 0.95rem;
+  background-color: #bde47a;   /* 연두색 */
+  color: #222;
   border: none;
-  background: #1976d2;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(189, 228, 122, 0.13);
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+.long-btn:hover {
+  background-color: #a2d156;
+  transform: scale(1.03);
 }
 
-.movie-detail button:hover {
-  background: #125ea2;
-}
-
-.movie-detail button[style*="background-color: red"] {
-  background: #e53935 !important;
-  color: #fff !important;
-}
-
-.movie-detail button[style*="background-color: red"]:hover {
-  background: #b71c1c !important;
+/* 영화 검색창 레이아웃 */
+.movie-search-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto 32px auto;
+  max-width: 800px;
 }
 
 /* 반응형 */
@@ -414,103 +299,8 @@ h2 {
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .long-btn, .movie-search {
-    max-width: 98vw;
-    font-size: 1rem;
-  }
-  h2 {
-    font-size: 1.3rem;
-  }
-  .movie-detail {
-    padding: 16px 4vw;
-  }
-  .movie-detail h2 {
-    font-size: 1.2rem;
-  }
-}
-
-/* 관리자 페이지 테이블 스타일 */
-.admin-table {
+  .movie-search, .long-btn.inline, .search-btn {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    background-color: #2a2a40;
-    color: #f5f5f5;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+  }
 }
-
-.admin-table th,
-.admin-table td {
-    padding: 12px 16px;
-    text-align: center;
-    border-bottom: 1px solid #444;
-}
-
-.admin-table thead {
-    background-color: #3a3a55;
-    font-weight: bold;
-}
-
-.admin-table tbody tr:hover {
-    background-color: #3e3e5c;
-}
-
-.admin-table button {
-    padding: 8px 12px;
-    background-color: #BDE47A;
-    color: #1e1e2f;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.admin-table button:hover {
-    background-color: #A2D156;
-}
-
-.cta-button {
-    position: relative;
-    display: inline-block;
-    padding: 12px 26px;
-    background-color: #BDE47A;
-    color: #1e1e2f;
-    font-weight: bold;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 16px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: scale(1.05);
-}
-
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.4), transparent);
-    transform: skewX(-20deg);
-    pointer-events: none;
-}
-
-.cta-button:hover::before {
-    animation: shine 0.8s ease;
-}
-
-@keyframes shine {
-    0% {
-        left: -75%;
-    }
-    100% {
-        left: 125%;
-    }
-}
-

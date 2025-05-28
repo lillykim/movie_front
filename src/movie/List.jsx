@@ -7,8 +7,10 @@ const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [search, setSearch] = useState(""); // 검색어 상태 추가
-  const [expanded, setExpanded] = useState({}); // 각 영화의 더보기 상태
+
+  const [searchInput, setSearchInput] = useState(""); // 입력창 상태
+  const [searchQuery, setSearchQuery] = useState(""); // 실제 검색 기준
+  const [expanded, setExpanded] = useState({}); // 더보기 상태
 
   const navigate = useNavigate();
 
@@ -42,13 +44,19 @@ const MovieList = () => {
       });
   }, []);
 
-  // 검색 필터링
+  // 검색 버튼 클릭 시
+  const handleSearch = () => {
+    setSearchQuery(searchInput);
+  };
+
+  // 검색된 영화 필터링
   const filteredMovies = movies.filter(
     (movie) =>
-      movie.title.toLowerCase().includes(search.toLowerCase()) ||
-      movie.actors.toLowerCase().includes(search.toLowerCase())
+      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      movie.actors.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // 더보기 토글
   const handleToggle = (id) => {
     setExpanded((prev) => ({
       ...prev,
@@ -62,20 +70,26 @@ const MovieList = () => {
   return (
     <>
       <h2>🎬 영화 목록</h2>
-      {/* 검색 입력창 */}
-      <input
-        type="text"
-        className="movie-search"
-        placeholder="영화 제목 또는 배우로 검색"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+
+      {/* 검색창 + 버튼 묶음 */}
+      <div className="search-container">
+        <input
+          type="text"
+          className="movie-search"
+          placeholder="영화 제목 또는 배우로 검색"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <button className="search-btn" onClick={handleSearch}>검색</button>
+        <button className="long-btn" onClick={() => navigate("/regist")}>영화 등록</button>
+      </div>
+
       {filteredMovies.length === 0 ? (
         <p>등록된 영화가 없습니다.</p>
       ) : (
         <ul className="movie-list">
           {filteredMovies.map((movie) => {
-            const isLong = movie.story && movie.story.length > 80; // 80자 이상이면 더보기
+            const isLong = movie.story && movie.story.length > 80;
             const showAll = expanded[movie.id];
             return (
               <li
@@ -97,7 +111,7 @@ const MovieList = () => {
                 )}
                 <p
                   className={`movie-story${!showAll && isLong ? " clamp" : ""}`}
-                  onClick={e => e.stopPropagation()} // 카드 클릭 방지
+                  onClick={e => e.stopPropagation()}
                 >
                   <span className="movie-label">줄거리:</span>{" "}
                   {showAll || !isLong
@@ -123,7 +137,6 @@ const MovieList = () => {
           })}
         </ul>
       )}
-      <button className="long-btn" onClick={() => navigate("/regist")}>영화 등록</button>
     </>
   );
 };
