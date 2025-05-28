@@ -67,7 +67,6 @@ const Detail = () => {
       <p><strong>줄거리:</strong> {movie.story}</p>
       <p><strong>배우:</strong> {movie.actors}</p>
       <p><strong>평점:</strong> {movie.rating ?? '평점 없음'}</p>
-      <p><strong>등록 ID:</strong> {movie.id}</p>
 
       <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
         <Link to={`/movies/${movie.id}/edit`}>
