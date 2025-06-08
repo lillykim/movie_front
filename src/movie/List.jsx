@@ -109,23 +109,28 @@ const MovieList = () => {
                     style={{ width: "200px", borderRadius: "8px", display: "block", margin: "16px auto" }}
                   />
                 )}
-                <p
-                  className={`movie-story${!showAll && isLong ? " clamp" : ""}`}
-                  onClick={e => e.stopPropagation()}
-                >
-                  <span className="movie-label">줄거리:</span>{" "}
-                  {showAll || !isLong
-                    ? movie.story
-                    : movie.story.slice(0, 80) + "..."}
+                <p className="movie-label">줄거리:</p>
+                <div style={{ textAlign: "left", paddingLeft: 4 }}>
+                  <span className={`movie-story${!showAll && isLong ? " clamp" : ""}`} style={{ display: "inline" }}>
+                    {showAll || !isLong
+                      ? movie.story
+                      : movie.story.slice(0, 80) + "..."}
+                  </span>
                   {isLong && (
                     <button
                       className="more-btn"
-                      onClick={() => handleToggle(movie.id)}
+                      onClick={e => {
+                        e.stopPropagation();
+                        handleToggle(movie.id);
+                      }}
+                      tabIndex={0}
+                      type="button"
+                      style={{ display: "inline" }}
                     >
                       {showAll ? "접기" : "더보기"}
                     </button>
                   )}
-                </p>
+                </div>
                 <p className="movie-actors">
                   <span className="movie-label">배우:</span> {movie.actors}
                 </p>
